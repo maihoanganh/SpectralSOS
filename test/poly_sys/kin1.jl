@@ -27,5 +27,5 @@ h=[s1^2 + c1^2 - 1;
 L=1e4 # Squared radius of a ball containing at least one real root
 k=2 # relaxed order
 
-sol=SpectralPOP.ASC_PolySys(x,h,k,L,method="LMBM",EigAlg="Arpack",tol=1e-3);
+sol=ASC_PolySys(x,h,k,L,method="LMBM",EigAlg="Arpack",tol=1e-3);
 end

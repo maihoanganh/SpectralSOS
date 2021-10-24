@@ -15,7 +15,7 @@ function getPOP_random_dense_QCQP_unique_inequality_ball_constraint(n::Int64,dat
     
     include(data*"/densePOPsphere_deg2_var$(n)_nineq1_neq$(l).jl")
 
-    x,f,g,h=SpectralPOP.get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_f);
+    x,f,g,h=get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_f);
     return x,f,g,h,R
 end
 
@@ -36,7 +36,7 @@ function test_test_random_dense_QCQP_unique_inequality_ball_constraint(n::Int64,
 
     if n<=30
 
-        opt_val = SpectralPOP.SumofSquares_POP2(x,f,g,h,k) # SumOfSquares.jl + Mosek
+        opt_val = SumofSquares_POP2(x,f,g,h,k) # SumOfSquares.jl + Mosek
 
         println()
         println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")

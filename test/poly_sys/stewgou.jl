@@ -20,5 +20,5 @@ x2*x3+y2*y3+z2*z3+x2-2*y2-x3+2*y3-34;
 L=1e4 # Squared radius of a ball containing at least one real root
 k=2 # relaxed order
 
-sol=SpectralPOP.ASC_PolySys(x,h,k,L,method="LMBM",EigAlg="Arpack",tol=1e-3);
+sol=ASC_PolySys(x,h,k,L,method="LMBM",EigAlg="Arpack",tol=1e-3);
 end

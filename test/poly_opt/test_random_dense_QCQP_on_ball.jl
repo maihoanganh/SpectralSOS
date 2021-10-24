@@ -36,21 +36,21 @@ function test_test_random_dense_QCQP_on_ball(n::Int64,data)
 
     if n<=30
 
-        opt_val = SpectralPOP.SumofSquares_POP2(x,f,g,h,k) # SumOfSquares.jl + Mosek
+        opt_val = SumofSquares_POP2(x,f,g,h,k) # SumOfSquares.jl + Mosek
 
         println()
         println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         println()
     end
 
-    opt_val,opt_sol = SpectralPOP.CTP_POP_on_Ball(x,f,g,h,k,R,EigAlg="Mix",scale=true)
+    opt_val,opt_sol = CTP_POP_on_Ball(x,f,g,h,k,R,EigAlg="Mix",scale=true)
 
     if n<=20
         println()
         println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         println()
         try
-            opt_val,opt_sol = SpectralPOP.BTP_POP(x,f,g,h,k,R,EigAlg="Mix",scale=true)
+            opt_val,opt_sol = BTP_POP(x,f,g,h,k,R,EigAlg="Mix",scale=true)
         catch
             println("Error with BTP_POP")
         end

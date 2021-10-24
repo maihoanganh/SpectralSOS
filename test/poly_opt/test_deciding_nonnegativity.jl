@@ -47,14 +47,14 @@ function test_test_deciding_nonnegativity(n,d,data)
 
     g=Vector{Polynomial{true,Float64}}([])
 
-    opt_val = SpectralPOP.SumofSquares_POP2(x,f,g,h,k) # SumOfSquares.jl + Mosek
+    opt_val = SumofSquares_POP2(x,f,g,h,k) # SumOfSquares.jl + Mosek
 
     println()
     println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     println()
 
 
-    opt_val,opt_sol = SpectralPOP.CTP_POP(x,f,h,k,R;method="LMBM",EigAlg="Mix",tol=1e-5,scale=true) #Limited memory bundle method
+    opt_val,opt_sol = CTP_POP(x,f,h,k,R;method="LMBM",EigAlg="Mix",tol=1e-5,scale=true) #Limited memory bundle method
 
 
     println()
