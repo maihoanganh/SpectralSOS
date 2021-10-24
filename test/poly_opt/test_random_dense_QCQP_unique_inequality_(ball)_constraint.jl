@@ -4,7 +4,7 @@ function getPOP_random_dense_QCQP_unique_inequality_ball_constraint(n::Int64,dat
 
     l=ceil(Int32, n/4)
 
-    println("Number of variable: n=",n)
+    println("Number of variables: n=",n)
     println("====================")
 
     println("Number of inequality constraints: l_g=",1)
@@ -27,7 +27,7 @@ function test_test_random_dense_QCQP_unique_inequality_ball_constraint(n::Int64,
 
     k=2
 
-    println("Relaxed order: k=",k)
+    println("Relaxation order: k=",k)
 
     println()
     println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")

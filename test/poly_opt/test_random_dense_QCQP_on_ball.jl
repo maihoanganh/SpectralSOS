@@ -5,7 +5,7 @@ function getPOP_random_dense_QCQP_on_ball(n::Int64,data)
     m=ceil(Int32, n/8)
     l=ceil(Int32, n/8)
 
-    println("Number of variable: n=",n)
+    println("Number of variables: n=",n)
     println("====================")
 
     println("Number of inequality constraints: l_g=",m)
@@ -27,7 +27,7 @@ function test_test_random_dense_QCQP_on_ball(n::Int64,data)
 
     k=2
 
-    println("Relaxed order: k=",k)
+    println("Relaxation order: k=",k)
 
     println()
     println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")

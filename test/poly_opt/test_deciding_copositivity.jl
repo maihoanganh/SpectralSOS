@@ -4,7 +4,7 @@ function getPOP_deciding_copositivity(n,data)
     
     println("***Problem setting***")
 
-    println("Number of variable: n=",n)
+    println("Number of variables: n=",n)
     println("====================")
 
     @polyvar x[1:n]# variables
@@ -32,7 +32,7 @@ function test_test_deciding_copositivity(n,data)
 
     k=Int64(2)
 
-    println("Relaxed order: k=",k)
+    println("Relaxation order: k=",k)
 
 
     println()

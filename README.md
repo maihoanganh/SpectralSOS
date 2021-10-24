@@ -17,10 +17,10 @@ by using spectral (the largest eigenvalue) minimization:
 
 with Limited memory bundle method instead of costly Interior-point methods.
 
-- Compared to SumOfSquares (Mosek) and SketchyCGAL, SpectralSOS is cheaper, faster, but maintains the same accuracy with SumOfSquares on a tested sample of random dense equality constrained QCQPs on the unit sphere.
+- Compared to SumOfSquares (Mosek) and SketchyCGAL, SpectralSOS is cheaper, faster, but maintains the same accuracy as SumOfSquares on a tested sample of random dense equality constrained QCQPs on the unit sphere.
 
 # Required softwares
-SpectralSOS has been implemented on a desktop compute with the following softwares:
+SpectralSOS has been implemented on a desktop computer with the following softwares:
 - Ubuntu 18.04.4
 - Julia 1.3.1
 - Fortran 2018
@@ -54,7 +54,7 @@ f=x[1]^2+0.5*x[1]*x[2]-0.25*x[2]^2+0.75*x[1]-0.3*x[2] # objective function to mi
 R=1.0 # squared radius of a sphere constraint
 h=[R-sum(x.^2);(x[1]-1.0)*x[2]] # equality constraints (including the sphere constraint)
 
-k=2 # relaxed order
+k=2 # relaxation order
 
 using SpectralSOS
 
@@ -117,7 +117,7 @@ On the display, two solvers are separated by a line:
 
 ```~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~```
 
-and two problems are separate by the three ones:
+and two problems are separated by three lines:
 
 ```~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~```
 ```~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~```

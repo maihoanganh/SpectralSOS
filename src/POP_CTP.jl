@@ -8,7 +8,7 @@ function CTP_POP_on_Ball(x,f,g,h,k,R;EigAlg="Arpack",method="LMBM",tol=1e-5,show
     invb=0.0
     sol=0.0
     for j in 1:l_g
-        println("**Conpute upper bound ",j)
+        println("**Computing the upper bound ",j)
         invb,sol = CTP_POP([x;x_slack[1]],-g[j],[h;g[1]-x_slack[1]^2],k,R;method=method,EigAlg=EigAlg,tol=tol,scale=scale)
         R_bar-=invb
         println("--------------------------")
@@ -219,7 +219,7 @@ end
     
 function ConvertStandardSDP(x::Vector{PolyVar{true}},f::Polynomial{true},h::Vector{Polynomial{true,Float64}},k::Int64;scale=false)
 
-    println("**Convert moment relaxation to standard SDP:")
+    println("**Converting the moment relaxation to the standard SDP:")
     
     n=length(x)
     l_h=length(h)
@@ -242,7 +242,7 @@ function ConvertStandardSDP(x::Vector{PolyVar{true}},f::Polynomial{true},h::Vect
     
     d=Int64(0.5*sk*(sk+1))
     m=d-s2k+1+sum(s2k_h)
-    println("  Number of equality trace constraints: m=",m)
+    println("  Number of trace equality constraints: m=",m)
    
         
     

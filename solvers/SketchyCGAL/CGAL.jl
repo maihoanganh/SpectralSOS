@@ -47,7 +47,7 @@ function CGAL(n::UInt32,Primitive1,Primitive2,Primitive3,a::Vector{Float32},b,R:
     a_t=Float64(0)
     dualUpdate=Vector{Float64}(undef,d)
    
-    println("- SketchyCGAL SDP Solver - Beta.V.0.0")
+    #println("- SketchyCGAL SDP Solver - Beta.V.0.0")
     
     for t in 1:T
         

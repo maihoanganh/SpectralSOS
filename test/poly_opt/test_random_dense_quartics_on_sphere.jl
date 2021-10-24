@@ -2,7 +2,7 @@ function getPOP_random_dense_quartics_on_sphere(n::Int64,data)
     println("***Problem setting***")
 
 
-    println("Number of variable: n=",n)
+    println("Number of variables: n=",n)
     println("====================")
 
     println("Number of inequality constraints: l_g=",0)
@@ -27,7 +27,7 @@ function test_test_random_dense_quartics_on_sphere(n::Int64,data)
         
     k=Int64(2)
 
-    println("Relaxed order: k=",k)
+    println("Relaxation order: k=",k)
 
 
     println()

@@ -4,7 +4,7 @@ function getPOP_deciding_nonnegativity(n,d,data)
     println("***Problem setting***")
 
 
-    println("Number of variable: n=",n)
+    println("Number of variables: n=",n)
     println("====================")
 
     @polyvar x[1:n]# variables
@@ -36,7 +36,7 @@ function test_test_deciding_nonnegativity(n,d,data)
 
     k=Int64(d)
 
-    println("Relaxed order: k=",k)
+    println("Relaxation order: k=",k)
 
 
     println()

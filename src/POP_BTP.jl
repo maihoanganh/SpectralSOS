@@ -279,7 +279,7 @@ function BTP_POP(x::Vector{PolyVar{true}},f::Polynomial{true},g::Vector{Polynomi
     append!(A,[matA])
     m=length(A)
             
-    println("  Number of equality trace constraints: m=",m) 
+    println("  Number of trace equality constraints: m=",m) 
            
 
     l_vec=UInt64(.5*(sk*(sk+1)+sum(sk_g[i]*(sk_g[i]+1) for i in 1:l_g)))+1

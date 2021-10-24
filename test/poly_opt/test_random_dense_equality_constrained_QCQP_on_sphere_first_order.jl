@@ -3,7 +3,7 @@ function getPOP_random_dense_equality_constrained_QCQP_on_sphere_first_order(n::
 
     l=ceil(Int32, n/4)+1
 
-    println("Number of variable: n=",n)
+    println("Number of variables: n=",n)
     println("====================")
 
     println("Number of inequality constraints: l_g=",0)
@@ -27,7 +27,7 @@ function test_test_random_dense_equality_constrained_QCQP_on_sphere_first_order(
     
     k=Int64(1)
 
-    println("Relaxed order: k=",k)
+    println("Relaxation order: k=",k)
 
     println()
     println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")

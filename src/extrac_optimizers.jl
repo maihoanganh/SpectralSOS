@@ -275,7 +275,7 @@ function extract_optimizer2(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{
                 
                 @inbounds check=polynomial(f)(x => atom)-opt_val
                 
-                println("  check gap of lower bound  = ",check)
+                #println("  check gap of lower bound  = ",check)
                 if abs(check)>1e-1
                     @inbounds flag=0
                 end

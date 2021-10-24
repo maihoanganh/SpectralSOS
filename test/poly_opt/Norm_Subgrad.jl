@@ -9,7 +9,7 @@ l=ceil(Int32, n/4)
 
 
 
-println("Number of variable: n=",n)
+println("Number of variables: n=",n)
 println("====================")
 
 println("Number of inequality constraints: l_g=",1)
@@ -25,7 +25,7 @@ x,f,g,h=get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_
 
 k=2
 
-println("Relaxed order: k=",k)
+println("Relaxation order: k=",k)
 
 
 
@@ -47,7 +47,7 @@ m=ceil(Int32, n/8)
 l=ceil(Int32, n/8)
 
 
-println("Number of variable: n=",n)
+println("Number of variables: n=",n)
 println("====================")
 
 println("Number of inequality constraints: l_g=",m)
@@ -63,7 +63,7 @@ x,f,g,h=get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_
 
 k=2
 
-println("Relaxed order: k=",k)
+println("Relaxation order: k=",k)
 
 println()
 println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")

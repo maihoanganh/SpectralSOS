@@ -3,7 +3,7 @@ function getPOP_Evaluation_comparisons(n::Int64,data)
 
     l=ceil(Int32, n/4)+1
 
-    println("Number of variable: n=",n)
+    println("Number of variables: n=",n)
     println("====================")
         
     println("Number of inequality constraints: l_g=",0)
@@ -28,7 +28,7 @@ function test_Evaluation_comparisons(n::Int64,data)
     
     k=Int64(2)
 
-    println("Relaxed order: k=",k)
+    println("Relaxation order: k=",k)
 
     println()
     println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
