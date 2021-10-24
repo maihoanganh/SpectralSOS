@@ -56,8 +56,14 @@ function CTP_POP(x::Vector{PolyVar{true}},f::Polynomial{true,Float64},h::Vector{
         if showNormGrad
             global norm_grad=Vector{Float64}([])
         end
-        @time n,l,v,s,m,a0,a,Ib,Vb,invInde,invP,norm_a0,opnorm_a = ConvertStandardSDP(x,f,h,k,scale=scale)
-        @time opt_val,sol=SpectralSDP(s,m,a0,a,Ib,Vb,invInde,(R+1)^k,norm_a0,opnorm_a,method=method,EigAlg=EigAlg,tol=tol,showNormGrad=showNormGrad,showEvaluation=showEvaluation)
+        @time begin
+            n,l,v,s,m,a0,a,Ib,Vb,invInde,invP,norm_a0,opnorm_a = ConvertStandardSDP(x,f,h,k,scale=scale)
+            println("Modeling time:")
+        end
+        @time begin
+            opt_val,sol=SpectralSDP(s,m,a0,a,Ib,Vb,invInde,(R+1)^k,norm_a0,opnorm_a,method=method,EigAlg=EigAlg,tol=tol,showNormGrad=showNormGrad,showEvaluation=showEvaluation)
+            println("Solving time:")
+        end
      
         
         println("------------------------------------")
@@ -66,10 +72,16 @@ function CTP_POP(x::Vector{PolyVar{true}},f::Polynomial{true,Float64},h::Vector{
         println("opt_val=",opt_val)
         println("====================================")
         if method=="LMBM" || method=="PB"
-            @time opt_sol=ExtractionOptSol(n,l,v,s,a0,a,invInde,sol,invP,opt_val,f,h,x,EigAlg=EigAlg,showEvaluation=showEvaluation)
+            @time begin 
+                opt_sol=ExtractionOptSol(n,l,v,s,a0,a,invInde,sol,invP,opt_val,f,h,x,EigAlg=EigAlg,showEvaluation=showEvaluation)
+            println("Extraction time:")
+            end
         elseif method=="SketchyCGAL"
             invPmat=diagm(invP)
-            @time opt_sol=extract_optimizer_moment_matrix(invPmat*sol*invPmat,s,v,n,l,opt_val,f,h,x)
+            @time begin 
+                opt_sol=extract_optimizer_moment_matrix(invPmat*sol*invPmat,s,v,n,l,opt_val,f,h,x)
+                println("Etraction time:")
+            end
         else
             opt_sol=Vector{Float64}([])
         end
@@ -87,6 +99,7 @@ function CTP_POP(x::Vector{PolyVar{true}},f::Polynomial{true,Float64},h::Vector{
             println("num_eig=",num_eig)
             println("----------------------------")
         end
+    println("Total time:")
     end
     return opt_val,opt_sol
 end
