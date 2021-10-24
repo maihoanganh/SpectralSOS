@@ -65,7 +65,8 @@ function extract_optimizer_moment_matrix(V::Matrix{Float64},lu0::Int64,basis_sig
                     @inbounds push!(atom,coordinatej[1])
                 end
                 println("------------------------------------")
-                println("atom ",i," = ",atom)
+                #println("atom ",i," = ",atom)
+                println("atom ",i,":")
                 @inbounds flag=1
                 
                 @inbounds check=abs(polynomial(f)(x => atom)-opt_val)#/minimum(abs.(coefficients(f)))
@@ -87,7 +88,8 @@ function extract_optimizer_moment_matrix(V::Matrix{Float64},lu0::Int64,basis_sig
                 if flag ==1
                     @inbounds sol=atom
                     println("####################################")
-                    println("Optimal solution: opt_sol = ",atom)
+                    #println("Optimal solution: opt_sol = ",atom)
+                    println("It is an approximate optimal solution!!!")
                     println("####################################")
                 end
 
@@ -162,7 +164,8 @@ function extract_optimizer(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{U
                     @inbounds push!(atom,coordinatej[1])
                 end
                 println("------------------------------------")
-                println("atom ",i," = ",atom)
+                #println("atom ",i," = ",atom)
+                println("atom ",i,":")
                 @inbounds flag=1
                 
                 @inbounds check=abs(polynomial(f)(x => atom)-opt_val)#/minimum(abs.(coefficients(f)))
@@ -184,7 +187,8 @@ function extract_optimizer(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{U
                 if flag ==1
                     @inbounds sol=atom
                     println("####################################")
-                    println("Optimal solution: opt_sol = ",atom)
+                    #println("Optimal solution: opt_sol = ",atom)
+                    println("It is an approximate optimal solution!!!")
                     println("####################################")
                 end
 
@@ -261,7 +265,8 @@ function extract_optimizer2(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{
                     @inbounds push!(atom,coordinatej[1])
                 end
                 println("------------------------------------")
-                println("atom ",i," = ",atom)
+                #println("atom ",i," = ",atom)
+                println("atom ",i,":")
                 @inbounds flag=1
                 
                 @inbounds check=polynomial(f)(x => atom)-opt_val
@@ -291,7 +296,8 @@ function extract_optimizer2(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{
                 if flag ==1
                     @inbounds sol=atom
                     println("####################################")
-                    println("Optimal solution: opt_sol = ",atom)
+                    #println("Optimal solution: opt_sol = ",atom)
+                    println("It is an approximate optimal solution!!!")
                     println("####################################")
                 end
 
