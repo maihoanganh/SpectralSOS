@@ -15,7 +15,7 @@ function getPOP_random_dense_quadratic_on_sphere(n::Int64,data)
     
     include(data*"/densePOPsphere_deg2_var$(n)_nineq0_neq1.jl")
 
-    x,f,g,h=SpectralPOP.get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_f);
+    x,f,g,h=get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_f);
     return x,f,g,h,R
 end    
 
@@ -64,7 +64,7 @@ end
 
 function test_random_dense_quadratic_on_sphere(data)
 
-N=[50;75;100;125;150;175;200;250;300]#=;350;400;500;700;900;1200;1500]=#
+N=[50;75;100;125;150;175;200;250;300;350;400;500;700;900;1200;1500]
 
 for n in N
     test_test_random_dense_quadratic_on_sphere(n,data)

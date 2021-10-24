@@ -45,7 +45,7 @@ function test_test_random_dense_QCQP_unique_inequality_ball_constraint(n::Int64,
 
     opt_val,opt_sol = SpectralPOP.CTP_POP_UniqueBallIneq(x,f,h,k,R;method="LMBM",EigAlg="Mix",tol=1e-5,scale=true)
 
-    if n<=20
+    if n<=25
         println()
         println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         println()
@@ -67,7 +67,7 @@ end
 function test_random_dense_QCQP_unique_inequality_ball_constraint(data)
 
 
-N=[5;10;15;20;25]#;30;35;40;45;50]
+N=[5;10;15;20;25;30;35;40;45;50]
 
 for n in N
     test_test_random_dense_QCQP_unique_inequality_ball_constraint(n,data)

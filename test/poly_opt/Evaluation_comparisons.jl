@@ -15,7 +15,7 @@ function getPOP_Evaluation_comparisons(n::Int64,data)
     
     include(data*"/densePOPsphere_deg2_var$(n)_nineq0_neq$(l).jl")
 
-    x,f,g,h=SpectralPOP.get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_f);
+    x,f,g,h=get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_f);
 
     return x,f,g,h,R
 end

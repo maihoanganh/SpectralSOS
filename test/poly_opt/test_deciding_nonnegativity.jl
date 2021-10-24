@@ -45,9 +45,12 @@ function test_test_deciding_nonnegativity(n,d,data)
 
 
 
-    g=Vector{Polynomial{true,Float64}}([])
-
-    opt_val = SumofSquares_POP2(x,f,g,h,k) # SumOfSquares.jl + Mosek
+    
+    
+    if n<=30
+        g=Vector{Polynomial{true,Float64}}([])
+        opt_val = SumofSquares_POP2(x,f,g,h,k) # SumOfSquares.jl + Mosek
+    end
 
     println()
     println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -69,7 +72,7 @@ end
 function test_deciding_nonnegativity(data)
 
     d=2
-    N=[5;10;15;20;25;30]
+    N=[5;10;15;20;25;30;35;40;45;50]
 
     for n in N
         test_test_deciding_nonnegativity(n,d,data)

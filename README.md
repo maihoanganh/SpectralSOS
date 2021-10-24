@@ -95,7 +95,7 @@ using SpectralSOS
 
 SpectralSOS.test_examples()
 
-data="/home/hoanganh/Desktop/math-topics/SpectralSOS/codes/dataPOP" # path of data 
+data="/home/hoanganh/Desktop/math-topics/SpectralPOP/codes/dataPOP" # path of data 
 
 #The path needs to be changed on the user's computer
 
