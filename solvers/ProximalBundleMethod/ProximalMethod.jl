@@ -357,7 +357,7 @@ function update_weight(bundle::Model{<:ProximalMethod})
 		end
 		updated = true
 	else
-		p = Compat.norm(-bundle.ext.u .* bundle.ext.d, 1)
+		p = LinearAlgebra.norm(-bundle.ext.u .* bundle.ext.d, 1)
 		α_tilde = -p^2 / bundle.ext.u - bundle.ext.v
 
 		bundle.ext.ϵ_v = min(bundle.ext.ϵ_v, p + α_tilde)
@@ -387,6 +387,6 @@ end
 
 
 function display_info!(bundle::Model{<:ProximalMethod})
-	Compat.Printf.@printf("Iter %d: fx0 %e, fx1 %e, fy %e, v %e, u %e, i %d\n",
+	Printf.@printf("Iter %d: fx0 %e, fx1 %e, fy %e, v %e, u %e, i %d\n",
 	bundle.k, bundle.ext.fx0, bundle.ext.fx1, bundle.fy, bundle.ext.v, bundle.ext.u, bundle.ext.i)
 end

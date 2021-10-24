@@ -89,8 +89,10 @@ function extract_optimizer_moment_matrix(V::Matrix{Float64},lu0::Int64,basis_sig
                     @inbounds sol=atom
                     println("####################################")
                     #println("Optimal solution: opt_sol = ",atom)
-                    println("It is an approximate optimal solution!!!")
+                    println("It is an approximate optimal solution!")
                     println("####################################")
+                else
+                    println("It is not an approximate optimal solution!")
                 end
 
             end
@@ -188,8 +190,10 @@ function extract_optimizer(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{U
                     @inbounds sol=atom
                     println("####################################")
                     #println("Optimal solution: opt_sol = ",atom)
-                    println("It is an approximate optimal solution!!!")
+                    println("It is an approximate optimal solution!")
                     println("####################################")
+                else
+                    println("It is not an approximate optimal solution!")
                 end
 
             end
@@ -297,8 +301,10 @@ function extract_optimizer2(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{
                     @inbounds sol=atom
                     println("####################################")
                     #println("Optimal solution: opt_sol = ",atom)
-                    println("It is an approximate optimal solution!!!")
+                    println("It is an approximate optimal solution!")
                     println("####################################")
+                else
+                    println("It is not an approximate optimal solution!")
                 end
 
             end

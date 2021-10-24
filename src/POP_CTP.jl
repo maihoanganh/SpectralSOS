@@ -56,14 +56,8 @@ function CTP_POP(x::Vector{PolyVar{true}},f::Polynomial{true,Float64},h::Vector{
         if showNormGrad
             global norm_grad=Vector{Float64}([])
         end
-        @time begin
-            n,l,v,s,m,a0,a,Ib,Vb,invInde,invP,norm_a0,opnorm_a = ConvertStandardSDP(x,f,h,k,scale=scale)
-            println("Modeling time:")
-        end
-        @time begin
-            opt_val,sol=SpectralSDP(s,m,a0,a,Ib,Vb,invInde,(R+1)^k,norm_a0,opnorm_a,method=method,EigAlg=EigAlg,tol=tol,showNormGrad=showNormGrad,showEvaluation=showEvaluation)
-            println("Solving time:")
-        end
+        @time n,l,v,s,m,a0,a,Ib,Vb,invInde,invP,norm_a0,opnorm_a = ConvertStandardSDP(x,f,h,k,scale=scale)
+        @time opt_val,sol=SpectralSDP(s,m,a0,a,Ib,Vb,invInde,(R+1)^k,norm_a0,opnorm_a,method=method,EigAlg=EigAlg,tol=tol,showNormGrad=showNormGrad,showEvaluation=showEvaluation)
      
         
         println("------------------------------------")
@@ -72,16 +66,10 @@ function CTP_POP(x::Vector{PolyVar{true}},f::Polynomial{true,Float64},h::Vector{
         println("opt_val=",opt_val)
         println("====================================")
         if method=="LMBM" || method=="PB"
-            @time begin 
-                opt_sol=ExtractionOptSol(n,l,v,s,a0,a,invInde,sol,invP,opt_val,f,h,x,EigAlg=EigAlg,showEvaluation=showEvaluation)
-            println("Extraction time:")
-            end
+            @time opt_sol=ExtractionOptSol(n,l,v,s,a0,a,invInde,sol,invP,opt_val,f,h,x,EigAlg=EigAlg,showEvaluation=showEvaluation)
         elseif method=="SketchyCGAL"
             invPmat=diagm(invP)
-            @time begin 
-                opt_sol=extract_optimizer_moment_matrix(invPmat*sol*invPmat,s,v,n,l,opt_val,f,h,x)
-                println("Etraction time:")
-            end
+            @time opt_sol=extract_optimizer_moment_matrix(invPmat*sol*invPmat,s,v,n,l,opt_val,f,h,x)
         else
             opt_sol=Vector{Float64}([])
         end
@@ -99,7 +87,6 @@ function CTP_POP(x::Vector{PolyVar{true}},f::Polynomial{true,Float64},h::Vector{
             println("num_eig=",num_eig)
             println("----------------------------")
         end
-    println("Total time:")
     end
     return opt_val,opt_sol
 end
@@ -142,9 +129,9 @@ function SpectralSDP(s::Int64,m::Int64,a0::Vector{Float64},a::SparseMatrixCSC{Fl
         println("**PB solver:")
         function evaluate_f(z::Vector{Float64})
             eigval,eigvec=LargEig(AdjOper(a0+a*z,invInde,s),s,EigAlg=EigAlg)
-            subgrads=CT*LinearOper(s,a,eigvec)
+            subgrads=LinearOper(s,a,eigvec)
             subgrads[Ib]+=Vb/opnorm_a/CT
-            return CT*eigval+(z[Ib]'*Vb)[1]/opnorm_a/CT, subgrads
+            return eigval+(z[Ib]'*Vb)[1]/opnorm_a/CT, subgrads
         end
 
         bundle = SpectralSOS.Model{ProximalMethod}(m, evaluate_f,tol)
@@ -153,7 +140,7 @@ function SpectralSDP(s::Int64,m::Int64,a0::Vector{Float64},a::SparseMatrixCSC{Fl
 
         optsol=getsolution(bundle)
         optval=getobjectivevalue(bundle)
-        return -optval*norm_a0*CT, optsol, optsol
+        return -optval*norm_a0*CT, optsol
     elseif method=="SketchyCGAL"
         println("**SketchyCGAL solver:")
         C=AdjOper(-a0,invInde,s)
