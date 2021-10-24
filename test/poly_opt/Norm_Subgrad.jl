@@ -59,7 +59,7 @@ println("====================")
 
 include(data*"/densePOPsphere_deg2_var$(n)_nineq$(m)_neq$(l).jl")
 
-x,f,g,h=SpectralPOP.get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_f);
+x,f,g,h=get_POP(n,m,l,lmon_g,supp_g,coe_g,lmon_h,supp_h,coe_h,lmon_f,supp_f,coe_f);
 
 k=2
 
@@ -70,5 +70,5 @@ println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 println()
 
 
-opt_val,opt_sol = SpectralPOP.CTP_POP_on_Ball(x,f,g,h,k,R,EigAlg="Mix",showNormGrad=true,scale=true)
+opt_val,opt_sol = CTP_POP_on_Ball(x,f,g,h,k,R,EigAlg="Mix",showNormGrad=true,scale=true)
 end

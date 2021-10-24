@@ -43,14 +43,14 @@ function test_test_random_dense_QCQP_unique_inequality_ball_constraint(n::Int64,
         println()
     end
 
-    opt_val,opt_sol = SpectralPOP.CTP_POP_UniqueBallIneq(x,f,h,k,R;method="LMBM",EigAlg="Mix",tol=1e-5,scale=true)
+    opt_val,opt_sol = CTP_POP_UniqueBallIneq(x,f,h,k,R;method="LMBM",EigAlg="Mix",tol=1e-5,scale=true)
 
     if n<=25
         println()
         println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         println()
         try
-            opt_val,opt_sol = SpectralPOP.BTP_POP(x,f,g,h,k,R,scale=true)
+            opt_val,opt_sol = BTP_POP(x,f,g,h,k,R,scale=true)
         catch
             println("Error with BTP_POP")
         end
