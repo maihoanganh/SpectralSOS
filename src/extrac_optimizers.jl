@@ -71,7 +71,7 @@ function extract_optimizer_moment_matrix(V::Matrix{Float64},lu0::Int64,basis_sig
                 
                 @inbounds check=abs(polynomial(f)(x => atom)-opt_val)#/minimum(abs.(coefficients(f)))
                 
-                println("  check gap of lower bound  = ",check)
+                #println("  check gap of lower bound  = ",check)
                 if abs(check)>1e-1
                     @inbounds flag=0
                 end
@@ -79,7 +79,7 @@ function extract_optimizer_moment_matrix(V::Matrix{Float64},lu0::Int64,basis_sig
 
                 for i=1:l
                     @inbounds check=abs(polynomial(h[i])(x => atom))#/minimum(abs.(coefficients(h[i])))
-                    println("  check equality constraint ",i," = ",check)
+                    #println("  check equality constraint ",i," = ",check)
                     if abs(check)>1e-1
                         @inbounds flag=0
                     end
@@ -170,7 +170,7 @@ function extract_optimizer(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{U
                 
                 @inbounds check=abs(polynomial(f)(x => atom)-opt_val)#/minimum(abs.(coefficients(f)))
                 
-                println("  check gap of lower bound  = ",check)
+                #println("  check gap of lower bound  = ",check)
                 if abs(check)>1e-1
                     @inbounds flag=0
                 end
@@ -178,7 +178,7 @@ function extract_optimizer(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{U
 
                 for i=1:l
                     @inbounds check=abs(polynomial(h[i])(x => atom))#/minimum(abs.(coefficients(h[i])))
-                    println("  check equality constraint ",i," = ",check)
+                    #println("  check equality constraint ",i," = ",check)
                     if abs(check)>1e-1
                         @inbounds flag=0
                     end
@@ -279,7 +279,7 @@ function extract_optimizer2(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{
 
                 for i=1:l_g
                     @inbounds check=polynomial(g[i])(x => atom)
-                    println("  check inequality constraint ",i," = ",check)
+                    #println("  check inequality constraint ",i," = ",check)
                     if check<-1e-1
                         @inbounds flag=0
                     end
@@ -287,7 +287,7 @@ function extract_optimizer2(Gr::Matrix{Float64},lu0::Int64,basis_sigma0::Matrix{
                 
                 for i=1:l_h
                     @inbounds check=polynomial(h[i])(x => atom)
-                    println("  check equality constraint ",i," = ",check)
+                    #println("  check equality constraint ",i," = ",check)
                     if abs(check)>1e-1
                         @inbounds flag=0
                     end
