@@ -13,7 +13,7 @@ k=2 # relaxed order
 
 
 g=Vector{Polynomial{true,Float64}}([])
-opt_val = SpectralPOP.SumofSquares_POP_WithExtraction(x,f,g,h,k) # SumOfSquares.jl + Mosek
+opt_val = SumofSquares_POP_WithExtraction(x,f,g,h,k) # SumOfSquares.jl + Mosek
 println()
 println(".................................")
 println()

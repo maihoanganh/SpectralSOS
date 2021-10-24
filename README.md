@@ -1,9 +1,9 @@
-# SpectralPOP
-- SpectralPOP is a Julia package of solving equality constrained polynomial optimization problems (POPs) on an Euclidean sphere:
+# SpectralSOS
+- SpectralSOS is a Julia package of solving equality constrained polynomial optimization problems (POPs) on an Euclidean sphere:
 
 **inf_x { f(x) : x in R^n, hj(x) = 0, j = 1,...,l } with h1 := R - |x|^2.**
 
-- The main idea of SpectralPOP is to solve an SDP (moment) relaxation of the form:
+- The main idea of SpectralSOS is to solve an SDP (moment) relaxation of the form:
 
 **v = sup_X { <C,X> : X is psd, AX = b },**
 
@@ -17,10 +17,10 @@ by using spectral (the largest eigenvalue) minimization:
 
 with Limited memory bundle method instead of costly Interior-point methods.
 
-- Compared to SumOfSquares (Mosek) and SketchyCGAL, SpectralPOP is cheaper, faster, but maintains the same accuracy with SumOfSquares on a tested sample of random dense equality constrained QCQPs on the unit sphere.
+- Compared to SumOfSquares (Mosek) and SketchyCGAL, SpectralSOS is cheaper, faster, but maintains the same accuracy with SumOfSquares on a tested sample of random dense equality constrained QCQPs on the unit sphere.
 
 # Required softwares
-SpectralPOP has been implemented on a desktop compute with the following softwares:
+SpectralSOS has been implemented on a desktop compute with the following softwares:
 - Ubuntu 18.04.4
 - Julia 1.3.1
 - Fortran 2018
@@ -34,13 +34,13 @@ The following sofwares are used for comparison purposes:
 - Limited memory bundle method is only supported on Ubuntu.
 
 # Installation
-- To use SpectralPOP in Julia, run
+- To use SpectralSOS in Julia, run
 ```ruby
-Pkg> develop https://github.com/maihoanganh/SpectralPOP.git
+Pkg> add https://github.com/maihoanganh/SpectralSOS.git
 ```
 
 # Usage
-The following examples briefly guide to use SpectralPOP (see more examples in files test/test_....ipynb):
+The following examples briefly guide to use SpectralSOS (see more examples in files test/test_....ipynb):
 
 ## Polynomial optimization
 Consider an equality constrained POP on the unit sphere as follows:
@@ -56,7 +56,7 @@ h=[R-sum(x.^2);(x[1]-1.0)*x[2]] # equality constraints (including the sphere con
 
 k=2 # relaxed order
 
-using SpectralPOP
+using SpectralSOS
 
 # get the optimal value and an optimal solution
 opt_val,opt_sol = CTP_POP(x,f,h,k,R,method="LMBM",EigAlg="Arpack",tol=1e-5,scale=true)
@@ -71,14 +71,14 @@ Here:
 
 - ```scale=true```: to scale the input of the SDP relaxation.
 
-See other options in the [link](https://github.com/maihoanganh/SpectralPOP/blob/master/examples/test_random_dense_quadratic_on_sphere.ipynb).
+See other options in the [link](https://github.com/maihoanganh/SpectralSOS/blob/master/examples/test_random_dense_quadratic_on_sphere.ipynb).
 
-The output from ```CTP_POP``` and other functions is explained in the [link](https://github.com/maihoanganh/SpectralPOP/blob/master/examples/test_random_dense_quadratic_on_sphere.ipynb).
+The output from ```CTP_POP``` and other functions is explained in the [link](https://github.com/maihoanganh/SpectralSOS/blob/master/examples/test_random_dense_quadratic_on_sphere.ipynb).
 
 
 To solve other types of POPs, see the links below:
-- [Constrained POPs with single inequality (ball) constraint](https://github.com/maihoanganh/SpectralPOP/blob/master/examples/test_random_dense_QCQP_unique_inequality_(ball)_constraint.ipynb);
-- [Constrained POPs on a ball](https://github.com/maihoanganh/SpectralPOP/blob/master/examples/test_random_dense_QCQP_on_ball.ipynb).
+- [Constrained POPs with single inequality (ball) constraint](https://github.com/maihoanganh/SpectralSOS/blob/master/examples/test_random_dense_QCQP_unique_inequality_(ball)_constraint.ipynb);
+- [Constrained POPs on a ball](https://github.com/maihoanganh/SpectralSOS/blob/master/examples/test_random_dense_QCQP_on_ball.ipynb).
 
 
 
@@ -91,25 +91,25 @@ To get the paper's benchmarks, download the zip file in this [link](https://driv
 
 The following commands allow one to reproduce the paper's benchmarks:
 ```ruby
-using SpectralPOP
+using SpectralSOS
 
-SpectralPOP.test_examples()
+SpectralSOS.test_examples()
 
-data="/home/hoanganh/Desktop/math-topics/SpectralPOP/codes/dataPOP" # path of data 
+data="/home/hoanganh/Desktop/math-topics/SpectralSOS/codes/dataPOP" # path of data 
 
 #The path needs to be changed on the user's computer
 
 # Polynomial optimization
-SpectralPOP.test_random_dense_quadratic_on_sphere(data) # Table 2
-SpectralPOP.test_random_dense_equality_constrained_QCQP_on_sphere_first_order(data) # Table 3
-SpectralPOP.test_random_dense_equality_constrained_QCQP_on_sphere_second_order(data) # Table 4 and 5
-SpectralPOP.Evaluation_comparisons(data) # Table 6
-SpectralPOP.test_random_dense_QCQP_unique_inequality_ball_constraint(data) # Table 7
-SpectralPOP.test_random_dense_QCQP_on_ball(data) # Table 8
-SpectralPOP.Norm_Subgrad(data) # Table 9
-SpectralPOP.test_random_dense_quartics_on_sphere(data) # Table 10
-SpectralPOP.test_deciding_nonnegativity(data) # Table 11
-SpectralPOP.test_deciding_convexity(data) #Table 12
-SpectralPOP.test_deciding_copositivity(data) #Table 13
+SpectralSOS.test_random_dense_quadratic_on_sphere(data) # Table 2
+SpectralSOS.test_random_dense_equality_constrained_QCQP_on_sphere_first_order(data) # Table 3
+SpectralSOS.test_random_dense_equality_constrained_QCQP_on_sphere_second_order(data) # Table 4 and 5
+SpectralSOS.Evaluation_comparisons(data) # Table 6
+SpectralSOS.test_random_dense_QCQP_unique_inequality_ball_constraint(data) # Table 7
+SpectralSOS.test_random_dense_QCQP_on_ball(data) # Table 8
+SpectralSOS.Norm_Subgrad(data) # Table 9
+SpectralSOS.test_random_dense_quartics_on_sphere(data) # Table 10
+SpectralSOS.test_deciding_nonnegativity(data) # Table 11
+SpectralSOS.test_deciding_convexity(data) #Table 12
+SpectralSOS.test_deciding_copositivity(data) #Table 13
 ```
 # SpectralSOS
