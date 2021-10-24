@@ -91,11 +91,11 @@ function CGAL(n::UInt32,Primitive1,Primitive2,Primitive3,a::Vector{Float32},b,R:
             U,Delt=Reconstruct(mySketch)
             @inbounds Delt += (TRACE-Delt)/R
             @inbounds U = U.*sqrt(Delt)
-            println("--------------------------")
-            println(" iter=$(t) ")
-            println(" stopObj=$(ObjCond) ")
-            println(" stopFeas=$(FeasCond) ")
-            println(" primalObj=$(objective) ")
+#             println("--------------------------")
+#             println(" iter=$(t) ")
+#             println(" stopObj=$(ObjCond) ")
+#             println(" stopFeas=$(FeasCond) ")
+#             println(" primalObj=$(objective) ")
         
         end
         if t == T 
