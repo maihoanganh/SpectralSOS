@@ -112,4 +112,16 @@ SpectralSOS.test_deciding_nonnegativity(data) # Table 11
 SpectralSOS.test_deciding_convexity(data) #Table 12
 SpectralSOS.test_deciding_copositivity(data) #Table 13
 ```
+
+On the display, two solvers are separated by a line: 
+
+```~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~```
+
+and two problems are separate by the three ones:
+
+```~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
 # SpectralSOS
