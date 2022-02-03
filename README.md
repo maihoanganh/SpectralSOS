@@ -26,7 +26,7 @@ SpectralSOS has been implemented on a desktop computer with the following softwa
 - Fortran 2018
 
 The following sofwares are used for comparison purposes:
-- [SumOfSquares.jl](https://github.com/JuliaOpt/SumOfSquares.jl)
+- [SumOfSquares](https://github.com/JuliaOpt/SumOfSquares.jl)
 - [Mosek 9.1](https://www.mosek.com)
 - [SketchyCGAL](https://github.com/alpyurtsever/SketchyCGAL)
 
@@ -123,4 +123,8 @@ and two problems are separated by three lines:
 ```~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~```
 ```~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~```
 
-# SpectralSOS
+# Exploiting CTP for POP with ball, box, annulus and simplex
+
+Visit [ctpPOP](https://github.com/maihoanganh/ctpPOP).
+
+
